@@ -71,12 +71,194 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
+
 # Generate models and tables, according to the domain model.
 # TODO!
+
+# In the terminal, run: rails generate model ______
+# #in terminal, execute the migration file
+# rails db:migrate
+
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+#Insert data into Studio table
+new_studio = Studio.new
+new_studio["name"] = "Warner Bros."
+new_studio.save
+
+#Insert data into Actor table
+c_bale = Actor.new
+c_bale["name"] = "Christian Bale"
+c_bale.save
+
+m_caine = Actor.new
+m_caine["name"] = "Michael Caine"
+m_caine.save
+
+l_neeson = Actor.new
+l_neeson["name"] = "Liam Neeson"
+l_neeson.save
+
+k_holmes = Actor.new
+k_holmes["name"] = "Katie Holmes"
+k_holmes.save
+
+g_oldman = Actor.new
+g_oldman["name"] = "Gary Oldman"
+g_oldman.save
+
+h_ledger = Actor.new
+h_ledger["name"] = "Heath Ledger"
+h_ledger.save
+
+a_eckhart = Actor.new
+a_eckhart["name"] = "Aaron Eckhart"
+a_eckhart.save
+
+m_gyllenhaal = Actor.new
+m_gyllenhaal["name"] = "Maggie Gyllenhaal"
+m_gyllenhaal.save
+
+t_hardy = Actor.new
+t_hardy["name"] = "Tom Hardy"
+t_hardy.save
+
+j_levitt = Actor.new
+j_levitt["name"] = "Joseph Gordon-Levitt"
+j_levitt.save
+
+a_hathaway = Actor.new
+a_hathaway["name"] = "Anne Hathaway"
+a_hathaway.save
+
+#Insert data into Movie table
+
+bb = Movie.new
+bb["title"] = "Batman Begins"
+bb["year_released"] = 2005
+bb["rated"] = "PG-13"
+bb["studio_id"] = new_studio["id"]
+bb.save
+
+tdk = Movie.new
+tdk["title"] = "The Dark Knight"
+tdk["year_released"] = 2008
+tdk["rated"] = "PG-13"
+tdk["studio_id"] = new_studio["id"]
+tdk.save
+
+tdkr = Movie.new
+tdkr["title"] = "The Dark Knight Rises"
+tdkr["year_released"] = 2012
+tdkr["rated"] = "PG-13"
+tdkr["studio_id"] = new_studio["id"]
+tdkr.save
+
+#Insert data into Role table
+
+#Batman Begins roles
+bw_bb = Role.new
+bw_bb["movie_id"] = bb["id"]
+bw_bb["actor_id"] = c_bale["id"]
+bw_bb["charachter_name"] = "Bruce Wayne"
+bw_bb.save
+
+bw_bb = Role.new
+bw_bb["movie_id"] = bb["id"]
+bw_bb["actor_id"] = m_caine["id"]
+bw_bb["charachter_name"] = "Alfred"
+bw_bb.save
+
+bw_bb = Role.new
+bw_bb["movie_id"] = bb["id"]
+bw_bb["actor_id"] = l_neeson["id"]
+bw_bb["charachter_name"] = "Ra's Al Ghul"
+bw_bb.save
+
+bw_bb = Role.new
+bw_bb["movie_id"] = bb["id"]
+bw_bb["actor_id"] = r_dawes["id"]
+bw_bb["charachter_name"] = "Rachel Dawes"
+bw_bb.save
+
+bw_bb = Role.new
+bw_bb["movie_id"] = bb["id"]
+bw_bb["actor_id"] = g_oldman["id"]
+bw_bb["charachter_name"] = "Commissioner Gordon"
+bw_bb.save
+
+
+#The Dark Knight roles
+
+bw_tdk = Role.new
+bw_tdk["movie_id"] = tdk["id"]
+bw_tdk["actor_id"] = c_bale["id"]
+bw_tdk["charachter_name"] = "Bruce Wayne"
+bw_tdk.save
+
+bw_tdk = Role.new
+bw_tdk["movie_id"] = tdk["id"]
+bw_tdk["actor_id"] = h_ledger["id"]
+bw_tdk["charachter_name"] = "Joker"
+bw_tdk.save
+
+bw_tdk = Role.new
+bw_tdk["movie_id"] = tdk["id"]
+bw_tdk["actor_id"] = a_eckhart["id"]
+bw_tdk["charachter_name"] = "Harvey Dent"
+bw_tdk.save
+
+bw_tdk = Role.new
+bw_tdk["movie_id"] = tdk["id"]
+bw_tdk["actor_id"] = m_caine["id"]
+bw_tdk["charachter_name"] = "Alfred"
+bw_tdk.save
+
+bw_tdk = Role.new
+bw_tdk["movie_id"] = tdk["id"]
+bw_tdk["actor_id"] = m_gyllenhaal["id"]
+bw_tdk["charachter_name"] = "Rachel Dawes"
+bw_tdk.save
+
+#The Dark Knight Rises roles
+
+bw_tdkr = Role.new
+bw_tdkr["movie_id"] = tdkr["id"]
+bw_tdkr["actor_id"] = c_bale["id"]
+bw_tdkr["charachter_name"] = "Bruce Wayne"
+bw_tdkr.save
+
+bw_tdkr = Role.new
+bw_tdkr["movie_id"] = tdkr["id"]
+bw_tdkr["actor_id"] = g_oldman["id"]
+bw_tdkr["charachter_name"] = "Commissioner Gordon"
+bw_tdkr.save
+
+bw_tdkr = Role.new
+bw_tdkr["movie_id"] = tdkr["id"]
+bw_tdkr["actor_id"] = t_hardy["id"]
+bw_tdkr["charachter_name"] = "Bane"
+bw_tdkr.save
+
+bw_tdkr = Role.new
+bw_tdkr["movie_id"] = tdkr["id"]
+bw_tdkr["actor_id"] = c_bale["id"]
+bw_tdkr["charachter_name"] = "Bruce Wayne"
+bw_tdkr.save
+
+bw_tdkr = Role.new
+bw_tdkr["movie_id"] = tdkr["id"]
+bw_tdkr["actor_id"] = c_bale["id"]
+bw_tdkr["charachter_name"] = "Bruce Wayne"
+bw_tdkr.save
+
 
 # Prints a header for the movies output
 puts "Movies"
