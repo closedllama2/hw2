@@ -76,6 +76,7 @@ Movie.destroy_all
 Actor.destroy_all
 Role.destroy_all
 
+
 # Generate models and tables, according to the domain model.
 # TODO!
 
@@ -184,7 +185,7 @@ bw_bb.save
 
 bw_bb = Role.new
 bw_bb["movie_id"] = bb["id"]
-bw_bb["actor_id"] = r_dawes["id"]
+bw_bb["actor_id"] = m_gyllenhaal["id"]
 bw_bb["charachter_name"] = "Rachel Dawes"
 bw_bb.save
 
@@ -249,14 +250,14 @@ bw_tdkr.save
 
 bw_tdkr = Role.new
 bw_tdkr["movie_id"] = tdkr["id"]
-bw_tdkr["actor_id"] = c_bale["id"]
-bw_tdkr["charachter_name"] = "Bruce Wayne"
+bw_tdkr["actor_id"] = j_levitt["id"]
+bw_tdkr["charachter_name"] = "John Blake"
 bw_tdkr.save
 
 bw_tdkr = Role.new
 bw_tdkr["movie_id"] = tdkr["id"]
-bw_tdkr["actor_id"] = c_bale["id"]
-bw_tdkr["charachter_name"] = "Bruce Wayne"
+bw_tdkr["actor_id"] = a_hathaway["id"]
+bw_tdkr["charachter_name"] = "Selina Kyle"
 bw_tdkr.save
 
 
@@ -268,6 +269,22 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+# loop through movies
+all_movies = Movie.all
+studio_name = Studio.find_by({ "name" => "Warner Bros." })
+
+puts "%-30s %-10s %-10s %s" % ["Title", "Year", "Rating", "Studio"]
+puts "-" * 60
+
+for movie in all_movies
+    title = movie["title"]
+    year = movie["year_released"]
+    rating = movie["rated"]
+    studio = studio_name["name"]
+    puts "%-30s %-10s %-10s %s" % [title, year, rating, studio]
+end
+
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
@@ -276,3 +293,21 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+# loop through roles
+
+puts "%-30s %-20s %s" % ["Title", "Actor", "Character"]
+puts "-" * 60
+
+for movie in all_movies
+  roles = Role.where({ "movie_id" => movie["id"] })
+  for role in roles
+    actor = Actor.find_by({ "id" => role["actor_id"] })
+    title = movie["title"]
+    name = actor["name"]
+    charachter = role["charachter_name"]
+    puts "%-30s %-20s %s" % [title, name, charachter]
+  end
+end
+
+
